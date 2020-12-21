@@ -1,7 +1,7 @@
 ### Date created
 21/12/2020
 ### Project Title
-Bike share Data EDA
+Bike Share Data EDA
 
 ### Description
 This R script contains an exploration of basic questions about the bikeshare data.
