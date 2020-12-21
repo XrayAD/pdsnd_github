@@ -1,34 +1,34 @@
 library("ggplot2")
 library(stringr)
-c = read.csv('chicago.csv')
-n = read.csv('new-york-city.csv')
-w = read.csv('washington.csv')
+chic = read.csv('chicago.csv')
+new = read.csv('new-york-city.csv')
+wash = read.csv('washington.csv')
 #Question 1 - What is the average ride time for all renters accross the cities?  
 #First lets's look at the Chicago data
-ggplot(aes(x = Trip.Duration/60), data = c) +
+ggplot(aes(x = Trip.Duration/60), data = chic) +
   geom_histogram(binwidth = .33, color = "blue") +
   coord_cartesian(xlim = c(0,60)) +
   labs(title = "Trip Duration Plot for Chicago", x = "Trip Duration in Minutes", y = "Trip Count")
 
-mean(c$Trip.Duration/60)
-median(c$Trip/60)
+mean(chic$Trip.Duration/60)
+median(chic$Trip/60)
 #Now the New york data
-ggplot(aes(x = Trip.Duration/60), data = n) +
+ggplot(aes(x = Trip.Duration/60), data = new) +
   geom_histogram(binwidth = .33, color = "blue") +
   coord_cartesian(xlim = c(0,60)) +
   labs(title = "Trip Duration Plot for New York", x = "Trip Duration in Minutes", y = "Trip Count")
 
-mean(n$Trip.Duration/60)
-median(n$Trip/60)
+mean(new$Trip.Duration/60)
+median(new$Trip/60)
 
 #and finally the Washington Data
-ggplot(aes(x = Trip.Duration/60), data = w) +
+ggplot(aes(x = Trip.Duration/60), data = wash) +
   geom_histogram(binwidth = .33, color = "blue") +
   coord_cartesian(xlim = c(0,60)) +
   labs(title = "Trip Duration Plot for Washington", x = "Trip Duration in Minutes", y = "Trip Count")
 
-mean(w$Trip.Duration/60)
-median(w$Trip/60)
+mean(wash$Trip.Duration/60)
+median(wash$Trip/60)
 #We see that the data for each graph is right skewed, with means much higher than median.
 # For chicago: mean 15.6, median 11.2. New York: mean 14.9, median 10.1.
 #Washington: mean 20.6, median 11.7.  In all cases longer riders are dragging up the mean.
@@ -40,7 +40,7 @@ median(w$Trip/60)
 # Now I want to compare the trip duration for subscribers versus customers in each New York,
 #to see if subsribers have longer trip durations than customers
 # Here a boxplot will show the medians and data distributions for each group
-ggplot(subset(n, !(n$User.Type==""))) +
+ggplot(subset(new, !(new$User.Type==""))) +
   geom_boxplot(aes(x = User.Type, y = Trip.Duration/60)) +
   coord_cartesian(ylim = c(0,60)) +
   labs(title = "BoxPlots For Trip During by Customer Type in New York", x = "Customer Type", y  = "Trip Duration in Minutes")
@@ -61,11 +61,11 @@ ggplot(subset(n, !(n$User.Type==""))) +
 
 
 # Plot for Start time, extracting hour from start time
-ggplot(data = c, aes(x = as.numeric(str_sub(c$Start.Time, -8, -7)))) +
+ggplot(data = chic, aes(x = as.numeric(str_sub(chic$Start.Time, -8, -7)))) +
   geom_histogram(binwidth = 1, color = "black", fill ="blue") +
   labs(title = "Start Time For Renters in Chicago", x = "Hour", y = "Count")
 # Plot for End time, extracting hour
-ggplot(data = c, aes(x = as.numeric(str_sub(c$End.Time, -8, -7)))) +
+ggplot(data = chic, aes(x = as.numeric(str_sub(chic$End.Time, -8, -7)))) +
   geom_histogram(binwidth = 1, color = "black", fill  = "red") +
   labs(title = "End Time For Renters in Chicago", x = "hour", y= "Count")
 
