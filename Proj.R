@@ -76,3 +76,9 @@ ggplot(data = chic, aes(x = as.numeric(str_sub(chic$End.Time, -8, -7)))) +
 # less than one hour.  So bikes free up rougly the same amount as they get
 # used hourly
 
+#Conclusion - The data mostly fits expectations, except that subscribers bike less
+#on average than normal customers.  There could be more suprises in the data,
+#and a lot more can be done on comparing data between the cities and overlaying
+#the information.  Next questions could be about popular locations and popular
+#locations by time
+
