@@ -1,14 +1,13 @@
 ### Date created
-Include the date you created this project and README file.
-
+21/12/2020
 ### Project Title
-Replace the Project Title
+Bike share Data EDA
 
 ### Description
-Describe what your project is about and what it does
+This R script contains an exploration of basic questions about the bikeshare data
 
 ### Files used
-Include the files used
+Uses the csv files containing necessary data for bikeshare
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
