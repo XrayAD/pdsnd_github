@@ -3,7 +3,9 @@ library(stringr)
 chic = read.csv('chicago.csv')
 new = read.csv('new-york-city.csv')
 wash = read.csv('washington.csv')
+
 #Question 1 - What is the average ride time for all renters accross the cities?  
+
 #First lets's look at the Chicago data
 ggplot(aes(x = Trip.Duration/60), data = chic) +
   geom_histogram(binwidth = .33, color = "blue") +
@@ -12,6 +14,7 @@ ggplot(aes(x = Trip.Duration/60), data = chic) +
 
 mean(chic$Trip.Duration/60)
 median(chic$Trip/60)
+
 #Now the New york data
 ggplot(aes(x = Trip.Duration/60), data = new) +
   geom_histogram(binwidth = .33, color = "blue") +
@@ -29,6 +32,7 @@ ggplot(aes(x = Trip.Duration/60), data = wash) +
 
 mean(wash$Trip.Duration/60)
 median(wash$Trip/60)
+
 #We see that the data for each graph is right skewed, with means much higher than median.
 # For chicago: mean 15.6, median 11.2. New York: mean 14.9, median 10.1.
 #Washington: mean 20.6, median 11.7.  In all cases longer riders are dragging up the mean.
@@ -39,6 +43,7 @@ median(wash$Trip/60)
 #Question 2 - Do subsribers or customers average longer rides in New York?
 # Now I want to compare the trip duration for subscribers versus customers in each New York,
 #to see if subsribers have longer trip durations than customers
+
 # Here a boxplot will show the medians and data distributions for each group
 ggplot(subset(new, !(new$User.Type==""))) +
   geom_boxplot(aes(x = User.Type, y = Trip.Duration/60)) +
@@ -48,10 +53,6 @@ ggplot(subset(new, !(new$User.Type==""))) +
 #it seems customers take on average much longer rides (a median about 7 minutes higher).  
 #This would indicate customers perhaps tour the city while subscribers have a short
 #commute in mind, leading them to subscribe.
-
-
-
-
 
 
 #Questions 3 - What are the most common start times for rides in Chicago?
